@@ -90,6 +90,12 @@ Menu::render( 'main' );
 </ul>
 ```
 
+## Custom attributes
+$name = false, $attributes = array(), $htmlTag = 'ul'
+```php
+echo Menu::render( 'main', array( 'class' => 'nav nav-pills nav-stacked', 'role' => 'tablist' ), 'nav' );
+```
+
 ## Use with third party menu UI through L4 Model
 (Please note this is just a general summary of how it would work if you had 2 tables (and models) for navigations and navigation items with a standard hasMany() relationship)
 
