@@ -16,17 +16,7 @@ use LukeSnowden\Menu\Helpers\URL;
 class MenuContainerNavigation
 {
 
-	/**
-	 * [$type description]
-	 * @var string
-	 */
-
 	private $type = 'default';
-
-	/**
-	 * [$stylesLocation description]
-	 * @var string
-	 */
 
 	private $stylesLocation = '';
 
@@ -92,13 +82,6 @@ class MenuContainerNavigation
 		}
 	}
 
-	/**
-	 * [renderDetail description]
-	 * @param  [type]  $structure [description]
-	 * @param  integer $depth     [description]
-	 * @return [type]             [description]
-	 */
-
 	private function renderDetail( $structure, $depth = 1 )
 	{
 		if( $depth === 1 )
@@ -144,12 +127,6 @@ class MenuContainerNavigation
 		return $array;
 	}
 
-	/**
-	 * [sortItems description]
-	 * @param  [type] $structure [description]
-	 * @return [type]            [description]
-	 */
-
 	private function sortItems( $structure )
 	{
 		$structure = self::ausort( $structure, 'weight' );
@@ -192,7 +169,7 @@ class MenuContainerNavigation
 				Throw new \Exception( "{$class} does not exist" );
 			}
 			$style = new $class();
-			$method = \camel_case( "render-{$this->type}" );
+			$method = String::camel_case( "render-{$this->type}" );
 			if( ! class_exists( $class, $method ) )
 			{
 				Throw new \Exception( "{$method} does not exist" );

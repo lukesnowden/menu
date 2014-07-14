@@ -25,7 +25,7 @@ class URL {
 	 * @return [type] [description]
 	 */
 
-	public function domain()
+	public static function domain()
 	{
 		$pageURL = 'http';
 		if ( isset( $_SERVER["HTTPS"] ) && $_SERVER["HTTPS"] == "on" )

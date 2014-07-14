@@ -1,5 +1,7 @@
 <?php namespace LukeSnowden\Menu;
 
+use LukeSnowden\Menu\Helpers\String;
+
 /*
 |--------------------------------------------------------------------------
 | Menu
@@ -52,9 +54,18 @@ class Menu
 			{
 				$parameters[] = false;
 			}
-			$parameters = array_merge( $parameters, array( 'menu' => \camel_case( $match[1] ) ) );
+			$parameters = array_merge( $parameters, array( 'menu' => String::camel_case( $match[1] ) ) );
 		}
 		return call_user_func_array( array( static::container(), $method ), $parameters );
+	}
+
+	/**
+	 * [__callStatic description]
+	 * @return [type] [description]
+	 */
+
+	public static function __callStatic( $name, $arguments ) {
+		return call_user_func_array( array( static::container(), $name ), $arguments );
 	}
 
 }

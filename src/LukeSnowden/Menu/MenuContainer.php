@@ -1,5 +1,7 @@
 <?php namespace LukeSnowden\Menu;
 
+use LukeSnowden\Menu\Helpers\String;
+
 /*
 |--------------------------------------------------------------------------
 | Menu Container
@@ -75,7 +77,7 @@ class MenuContainer
 
 	public function toMenu( $name )
 	{
-		$name = \camel_case( $name );
+		$name = String::camel_case( $name );
 		if( ! isset( $this->navigations[$name] ) )
 		{
 			$this->navigations[$name] = new MenuContainerNavigation( $name );
@@ -91,9 +93,9 @@ class MenuContainer
 
 	public function render( $name = false )
 	{
-		if( isset( $this->renders[\camel_case($name)] ) )
+		if( isset( $this->renders[String::camel_case($name)] ) )
 		{
-			return $this->renders[\camel_case($name)];
+			return $this->renders[String::camel_case($name)];
 		}
 		if( ! $name )
 		{
@@ -112,7 +114,7 @@ class MenuContainer
 		}
 		else
 		{
-			$name = \camel_case( $name );
+			$name = String::camel_case( $name );
 			if( ! isset( $this->navigations[$name] ) )
 			{
 				// This gets annoying!
