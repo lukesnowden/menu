@@ -111,23 +111,12 @@ echo Menu::render( $navigation->navigation_slug );
 ?>
 ```
 
-## Install
+## Laravel Install
 
 Add the following to you applications composer.json file
 
-
-```json
-"require": {
-        ...
-        "lukesnowden/menu" : "dev-master"
-},
-```
-
-Run the following from your terminal from your application route (make sure you have access to composer.phar)
-
-
-```shell
-php composer.phar update
+```php
+composer require lukesnowden/menu:dev-master
 ```
 
 add the following to your /app/config/app.php's provider array.
