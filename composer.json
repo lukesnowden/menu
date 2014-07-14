@@ -1,12 +1,12 @@
 {
-    "name": "purposemedia/menu",
+    "name": "lukesnowden/menu",
     "description": "Effortless menu building for Laravel 4",
-    "homepage": "https://bitbucket.org/purposemedia/menu/",
+    "homepage": "https://github.com/lukesnowden/menu/",
     "license": "MIT",
     "authors": [
         {
             "name": "Luke Snowden",
-            "email": "luke@purposemedia.co.uk"
+            "email": "luke@sno.wden.co.uk"
         }
     ],
     "require": {
@@ -14,16 +14,16 @@
     },
     "autoload": {
         "psr-0": {
-            "Purposemedia\\Menu": "src/"
+            "LukeSnowden\\Menu": "src/"
         }
     },
     "scripts": {
         "post-update-cmd": [
-            "php artisan package:install purposemedia/menu"
+            "php artisan package:install lukesnowden/menu"
         ],
         "post-create-project-cmd": [
             "php artisan key:generate",
-            "php artisan package:install purposemedia/menu"
+            "php artisan package:install lukesnowden/menu"
         ]
     },
     "minimum-stability": "dev"

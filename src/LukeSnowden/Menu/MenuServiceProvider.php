@@ -1,8 +1,8 @@
-<?php namespace Purposemedia\Menu;
+<?php namespace LukeSnowden\Menu;
 
 use Illuminate\Support\ServiceProvider;
 
-class MenuServiceProvider extends ServiceProvider 
+class MenuServiceProvider extends ServiceProvider
 {
 
 	/**
@@ -25,7 +25,7 @@ class MenuServiceProvider extends ServiceProvider
 		{
 			return new Menu;
 		});
-		$this->app['config']->package( "purposemedia/menu", dirname( __FILE__ ) . "/../../../config" );
+		$this->app['config']->package( "lukesnowden/menu", dirname( __FILE__ ) . "/../../../config" );
 	}
 
 	/**

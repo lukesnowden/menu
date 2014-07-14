@@ -1,6 +1,6 @@
-<?php namespace Purposemedia\Menu\Styles;
+<?php namespace LukeSnowden\Menu\Styles;
 
-class Styles 
+class Styles
 {
 	/*
 	public static function renderHorzontal( $structure = array(), $depth = 1 )

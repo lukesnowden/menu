@@ -1,6 +1,6 @@
-<?php namespace Purposemedia\Menu;
+<?php namespace LukeSnowden\Menu;
 
-use Purposemedia\Menu\Helpers\UTA as UTA;
+use LukeSnowden\Menu\Helpers\UTA as UTA;
 
 /*
 |--------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-<?php namespace Purposemedia\Menu\Helpers;
+<?php namespace LukeSnowden\Menu\Helpers;
 
 class UTA
 {

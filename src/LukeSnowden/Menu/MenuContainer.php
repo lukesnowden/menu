@@ -1,4 +1,4 @@
-<?php namespace Purposemedia\Menu;
+<?php namespace LukeSnowden\Menu;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +15,24 @@
 class MenuContainer
 {
 
-	private $stylesLocation = 'Purposemedia\\Menu\\Styles';
+	/**
+	 * [$stylesLocation description]
+	 * @var string
+	 */
+
+	private $stylesLocation = 'LukeSnowden\\Menu\\Styles';
+
+	/**
+	 * [$navigations description]
+	 * @var array
+	 */
 
 	private $navigations = array();
+
+	/**
+	 * [$renders description]
+	 * @var array
+	 */
 
 	private $renders = array();
 

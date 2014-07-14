@@ -1,4 +1,4 @@
-<?php namespace Purposemedia\Menu;
+<?php namespace LukeSnowden\Menu;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +14,18 @@
 class Menu
 {
 
+	/**
+	 * [$containers description]
+	 * @var array
+	 */
+
 	public static $containers = array();
+
+	/**
+	 * [container description]
+	 * @param  string $container [description]
+	 * @return [type]            [description]
+	 */
 
 	public static function container( $container = 'default' )
 	{
@@ -24,6 +35,13 @@ class Menu
 		}
 		return static::$containers[$container];
 	}
+
+	/**
+	 * [__call description]
+	 * @param  [type] $method     [description]
+	 * @param  [type] $parameters [description]
+	 * @return [type]             [description]
+	 */
 
 	public function __call( $method, $parameters )
 	{
