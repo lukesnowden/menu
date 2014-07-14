@@ -96,6 +96,19 @@ $name = false, $attributes = array(), $htmlTag = 'ul'
 echo Menu::render( 'main', array( 'class' => 'nav nav-pills nav-stacked', 'role' => 'tablist' ), 'nav' );
 ```
 
+## Customer Layout Render
+You may want to change the output layout (demo render class included)
+
+```php
+Menu::addItem( array( 'text' => 'Home', 'URL' => '/menu-test-2/public/', 'reference' => '1', 'class' => 'home-icon', 'weight' => 0 ) )->toMenu( 'main' );
+Menu::addItem( array( 'text' => 'Services', 'URL' => '/menu-test-2/public/services/', 'reference' => '2' ) )->toMenu( 'main' );
+Menu::addItem( array( 'text' => 'Development', 'URL' => '/menu-test-2/public/services/development/', 'reference' => '3', 'parent' => '2' ) )->toMenu( 'main' );
+Menu::addItem( array( 'text' => 'Design', 'URL' => '/menu-test-2/public/services/design/', 'reference' => '4', 'parent' => '2', 'weight' => 0 ) )->toMenu( 'main' );
+
+Menu::setMenuType( 'horizontal', 'main', 'LukeSnowden\Menu\Styles' );
+echo Menu::render( 'main' );
+```
+
 ## Use with third party menu UI through L4 Model
 (Please note this is just a general summary of how it would work if you had 2 tables (and models) for navigations and navigation items with a standard hasMany() relationship)
 

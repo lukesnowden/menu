@@ -2,6 +2,7 @@
 
 use LukeSnowden\Menu\Helpers\UTA as UTA;
 use LukeSnowden\Menu\Helpers\URL;
+use LukeSnowden\Menu\Helpers\String;
 
 /*
 |--------------------------------------------------------------------------
