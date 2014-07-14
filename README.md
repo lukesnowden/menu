@@ -72,7 +72,7 @@ echo Menu::render( 'main' );
 ```
 
 ```html
-<ul class="cf clearfix nav-main pm-menu">
+<ul class="nav-main">
     <li class="home-icon current first-item container node-1">
         <a href="/menu-test-2/public/">Home</a>
     </li>
