@@ -19,7 +19,7 @@ include __DIR__ . '/vendor/autoload.php';
 ```php
 <?php
 Menu::addItem( array( 'text' => 'Home', 'URL' => '/', 'reference' => '0' ) );
-Menu::render();
+echo Menu::render();
 ?>
 ```
 
@@ -29,7 +29,7 @@ Menu::render();
 ```php
 <?php
 Menu::addItem( array( 'text' => 'Services', 'URL' => '/services/', 'reference' => '1', 'parent' => '0' ) );
-Menu::render();
+echo Menu::render();
 ?>
 ```
 
@@ -39,7 +39,7 @@ Menu::render();
 ```php
 <?php
 Menu::addItem( array( 'text' => 'Services', 'URL' => '/services/', 'reference' => '1', 'parent' => '0' ) )->toMenu( 'main' );
-Menu::render( 'main' );
+echo Menu::render( 'main' );
 ?>
 ```
 
@@ -67,7 +67,7 @@ Menu::addItem( array( 'text' => 'Home', 'URL' => '/menu-test-2/public/', 'refere
 Menu::addItem( array( 'text' => 'Services', 'URL' => '/menu-test-2/public/services/', 'reference' => '2' ) )->toMenu( 'main' );
 Menu::addItem( array( 'text' => 'Development', 'URL' => '/menu-test-2/public/services/development/', 'reference' => '3', 'parent' => '2' ) )->toMenu( 'main' );
 Menu::addItem( array( 'text' => 'Design', 'URL' => '/menu-test-2/public/services/design/', 'reference' => '4', 'parent' => '2', 'weight' => 0 ) )->toMenu( 'main' );
-Menu::render( 'main' );
+echo Menu::render( 'main' );
 ?>
 ```
 
@@ -107,7 +107,7 @@ foreach( $navigation->navigationItems as $item )
 {
     Menu::addItem( array( 'text' => , $item->name 'URL' => $item->url, 'reference' => $item->id, 'parent' => $item->parent_id, 'weight' => $item->order ) )->toMenu( $navigation->navigation_slug );
 }
-Menu::render( $navigation->navigation_slug );
+echo Menu::render( $navigation->navigation_slug );
 ?>
 ```
 
