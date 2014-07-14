@@ -1,0 +1,11 @@
+{
+	"providers": [
+		"Purposemedia\Menu\MenuServiceProvider"
+	],
+	"aliases": [
+		{
+			"alias": "Menu",
+			"facade": "Purposemedia\Menu\Facades\Menu"
+		}
+	]
+}
