@@ -1,4 +1,4 @@
-# Purpose Media Menu Builder for Laravel 4
+# lukesnowden/menu
 
 
 ## Usage
@@ -12,7 +12,7 @@ Very simple method of building menus from database data (id, parent id), service
 
 ```php
 <?php
-Menu::addItem( array( 'text' => 'Home', 'URL' => '/', 'reference' => '0' ) ); 
+Menu::addItem( array( 'text' => 'Home', 'URL' => '/', 'reference' => '0' ) );
 Menu::render();
 ?>
 ```
@@ -22,7 +22,7 @@ Menu::render();
 
 ```php
 <?php
-Menu::addItem( array( 'text' => 'Services', 'URL' => '/services/', 'reference' => '1', 'parent' => '0' ) ); 
+Menu::addItem( array( 'text' => 'Services', 'URL' => '/services/', 'reference' => '1', 'parent' => '0' ) );
 Menu::render();
 ?>
 ```
@@ -107,7 +107,7 @@ Add the following to you applications composer.json file
 ```json
 "require": {
         ...
-        "purposemedia/menu" : "dev-master"
+        "lukesnowden/menu" : "dev-master"
 },
 ```
 
@@ -122,15 +122,15 @@ add the following to your /app/config/app.php's provider array.
 
 
 ```php
-'Purposemedia\Menu\MenuServiceProvider'
-``` 
+'LukeSnowden\Menu\MenuServiceProvider'
+```
 
 
 add the following to your /app/config/app.php's aliases array.
 
 
 ```php
-'Menu'      => 'Purposemedia\Menu\Facades\Menu'
+'Menu'      => 'LukeSnowden\Menu\Facades\Menu'
 ```
 
 
