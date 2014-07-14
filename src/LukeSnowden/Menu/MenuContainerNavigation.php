@@ -1,6 +1,7 @@
 <?php namespace LukeSnowden\Menu;
 
 use LukeSnowden\Menu\Helpers\UTA as UTA;
+use LukeSnowden\Menu\Helpers\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,17 @@ use LukeSnowden\Menu\Helpers\UTA as UTA;
 class MenuContainerNavigation
 {
 
+	/**
+	 * [$type description]
+	 * @var string
+	 */
+
 	private $type = 'default';
+
+	/**
+	 * [$stylesLocation description]
+	 * @var string
+	 */
 
 	private $stylesLocation = '';
 
@@ -81,6 +92,13 @@ class MenuContainerNavigation
 		}
 	}
 
+	/**
+	 * [renderDetail description]
+	 * @param  [type]  $structure [description]
+	 * @param  integer $depth     [description]
+	 * @return [type]             [description]
+	 */
+
 	private function renderDetail( $structure, $depth = 1 )
 	{
 		if( $depth === 1 )
@@ -125,6 +143,12 @@ class MenuContainerNavigation
 		}
 		return $array;
 	}
+
+	/**
+	 * [sortItems description]
+	 * @param  [type] $structure [description]
+	 * @return [type]            [description]
+	 */
 
 	private function sortItems( $structure )
 	{
@@ -189,8 +213,8 @@ class MenuContainerNavigation
 
 	public static function currentURI()
 	{
-		$fullLocation = rtrim( \URL::current(), '/' ) . '/';
-		$domain = \Config::get( 'app.url' );
+		$fullLocation = rtrim( URL::current(), '/' ) . '/';
+		$domain = URL::domain();
 		return str_replace( '//', '/', '/' . trim( str_replace( $domain, '', $fullLocation ), '/' ) . '/' );
 	}
 
@@ -347,14 +371,14 @@ class MenuContainerNavigation
 
 	public static function cleanseToURI( $url )
 	{
-		$domain = \Config::get( 'app.url' );
+		$domain = URL::domain();
 		if( preg_match( "#^https?://.*#", $url ) )
 		{
 			return $url;
 		}
 		else
 		{
-			return str_replace( '//', '/', '/' . trim( str_replace( \Config::get( 'app.url' ), '', UTA::urlToAbsolute( \URL::current(), $url ) ), '/' ) . '/' );
+			return str_replace( '//', '/', '/' . trim( str_replace( URL::domain(), '', UTA::urlToAbsolute( URL::current(), $url ) ), '/' ) . '/' );
 		}
 	}
 
