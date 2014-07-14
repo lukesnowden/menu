@@ -6,6 +6,12 @@
 
 Very simple method of building menus from database data (id, parent id), service provider register methods for application modules and much more.
 
+## Standalone
+
+```php
+use LukeSnowden\Menu\Menu;
+include __DIR__ . '/vendor/autoload.php';
+```
 
 ## Example 1
 
