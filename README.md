@@ -96,7 +96,7 @@ $name = false, $attributes = array(), $htmlTag = 'ul'
 echo Menu::render( 'main', array( 'class' => 'nav nav-pills nav-stacked', 'role' => 'tablist' ), 'nav' );
 ```
 
-## Customer Layout Render
+## Custom Layout Render
 You may want to change the output layout (demo render class included)
 
 ```php
