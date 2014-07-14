@@ -148,21 +148,33 @@ class MenuContainerNavigation
 	 * @param (void)
 	*/
 
-	public function render()
+	public function render( $attributes, $node )
 	{
 		$structure = $this->generate();
 		$structure = $this->sortItems( $structure );
+		if( ! isset( $attributes['class'] ) ) {
+			$attributes['class'] = '';
+		}
+		$attributesString = '';
 		$return = '';
 
 		if( $this->type === 'default' )
 		{
-			$return .= "<ul class=\"cf clearfix nav-{$this->name} pm-menu\">";
+			$attributes['class'] .= " nav-{$this->name}";
+			foreach( $attributes as $attribute => $value ) {
+				$attributesString .= " {$attribute}=\"{$value}\" ";
+			}
+			$return .= "<{$node} {$attributesString}>";
 			$return .=		$this->renderDetail( $structure );
-			$return .= "</ul>";
+			$return .= "</{$node}>";
 			return $return;
 		}
 		else
 		{
+			$attributes['class'] .= " nav-{$this->name}";
+			foreach( $attributes as $attribute => $value ) {
+				$attributesString .= " {$attribute}=\"{$value}\" ";
+			}
 			$class = $this->stylesLocation . '\\Styles';
 			if( ! class_exists( $class ) )
 			{
@@ -174,9 +186,9 @@ class MenuContainerNavigation
 			{
 				Throw new \Exception( "{$method} does not exist" );
 			}
-			$return .= "<ul class=\"cf clearfix nav-type-{$this->type} pm-menu\">";
+			$return .= "<{$node} {$attributesString}>";
 			$return .=		$style->{$method}( $structure );
-			$return .= "</ul>";
+			$return .= "</{$node}>";
 			return $return;
 		}
 

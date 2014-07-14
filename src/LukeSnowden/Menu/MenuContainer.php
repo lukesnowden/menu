@@ -91,7 +91,7 @@ class MenuContainer
 	 * @param $name (false/string)
 	*/
 
-	public function render( $name = false )
+	public function render( $name = false, $attributes = array(), $node = 'ul' )
 	{
 		if( isset( $this->renders[String::camel_case($name)] ) )
 		{
@@ -108,7 +108,7 @@ class MenuContainer
 			$this->renders[$name] = '';
 			foreach( $this->navigations as $navigation )
 			{
-				$this->renders[$name] .= $navigation->render();
+				$this->renders[$name] .= $navigation->render( $attributes, $node );
 			}
 			return $this->renders[$name];
 		}
@@ -121,7 +121,7 @@ class MenuContainer
 				// Throw new \Exception( "Navigation '{$name}' does not exist. Cannot process render." );
 				return false;
 			}
-			$this->renders[$name] = $this->navigations[$name]->render();
+			$this->renders[$name] = $this->navigations[$name]->render( $attributes, $node );
 			return $this->renders[$name];
 		}
 	}
