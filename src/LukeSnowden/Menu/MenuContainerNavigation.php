@@ -92,7 +92,9 @@ class MenuContainerNavigation
 		?>
 		<?php foreach( $structure as $level ) : ?>
 			<li class="<?php echo $level['class']; ?> <?php echo $level['parent'] === false ? 'p-container' : 'nav-node'; ?> node-<?php echo $depth; ?>">
-				<i class="<?php echo $level['icon']; ?>"></i>
+				<?php if( $level['icon'] !== '' ) : ?>
+					<i class="<?php echo $level['icon']; ?>"></i>
+				<?php endif; ?>
 				<a href="<?php echo $level['URL']; ?>" <?php self::renderAttributes( $level['attributes'] ); ?>><?php echo $level['text']; ?></a>
 				<?php if( ! empty( $level['children'] ) ) : ?>
 					<ul>
