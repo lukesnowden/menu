@@ -17,6 +17,11 @@ class URL {
 			$pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
 		else
 			$pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+
+		if( preg_match("#\?#is", $pageURL) ) {
+			$pageURLsplit = explode('?', $pageURL);
+			return $pageURLsplit[0];
+		}
 		return $pageURL;
 	}
 

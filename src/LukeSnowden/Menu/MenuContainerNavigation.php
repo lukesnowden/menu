@@ -130,6 +130,12 @@ class MenuContainerNavigation
 		return $array;
 	}
 
+	/**
+	 * [sortItems description]
+	 * @param  [type] $structure [description]
+	 * @return [type]            [description]
+	 */
+
 	private function sortItems( $structure )
 	{
 		$structure = self::ausort( $structure, 'weight' );
