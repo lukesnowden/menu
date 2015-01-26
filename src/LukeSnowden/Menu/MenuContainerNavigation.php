@@ -366,7 +366,7 @@ class MenuContainerNavigation
 		$domain = URL::domain();
 		if( preg_match( "#^https?://.*#", $url ) )
 		{
-			return $url;
+			return rtrim( str_replace( URL::domain(), '', $url ), '/' ) . '/';
 		}
 		else
 		{

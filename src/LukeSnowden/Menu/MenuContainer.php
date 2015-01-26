@@ -65,6 +65,9 @@ class MenuContainer
 			'icon'			=> '',
 			'attributes'	=> array()
 		);
+		if( isset( $perams['URL'] ) && preg_match( "#^route:(.*)$#is", $perams['URL'], $match ) ) {
+			$perams['URL'] = \URL::route( $match[1] );
+		}
 		$this->items[] = array_merge( $defaults, $perams );
 		return $this;
 	}
