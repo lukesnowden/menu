@@ -274,6 +274,7 @@ class MenuContainerNavigation
 			$return[$key]['class'] .= count( $item['children'] ) > 0 ? ' has-children' : '';
 			$return[$key]['class'] .= $this->isAnAncestor( $item['children'] );
 			$return[$key]['class'] .= $this->isParentClass( $item );
+			$return[$key]['class'] .= $this->isUrlParentClass( $item );
 		}
 		return $return;
 	}
@@ -319,6 +320,20 @@ class MenuContainerNavigation
 			{
 				return ' current-parent';
 			}
+		}
+		return '';
+	}
+
+	/**
+	 * [isUrlParentClass description]
+	 * @param  [type]  $item [description]
+	 * @return boolean       [description]
+	 */
+
+	public function isUrlParentClass( $item )  {
+		$currentURI = self::currentURI();
+		if( preg_match( "#^" . preg_quote( rtrim( self::cleanseToURI( $item['URL'] ), '/' ), "#" ) . "/[^/]+$#is", rtrim( $currentURI, '/' ) ) ) {
+			return ' current-url-parent';
 		}
 		return '';
 	}
@@ -413,6 +428,7 @@ class MenuContainerNavigation
 			$roots[$key]['children'] = $this->getChildren( $item['reference'] );
 			$roots[$key]['class'] .= count( $roots[$key]['children'] ) > 0 ? ' has-children' : '';
 			$roots[$key]['class'] .= $this->rootClass( $roots[$key]['children'] );
+			$roots[$key]['class'] .= $this->isUrlParentClass( $item );
 		}
 		return $roots;
 	}
