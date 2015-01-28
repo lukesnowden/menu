@@ -338,6 +338,14 @@ class MenuContainerNavigation
 		return '';
 	}
 
+	public function isUrlAncestorClass( $item ) {
+		$currentURI = self::currentURI();
+		if( preg_match( "#^" . preg_quote( rtrim( self::cleanseToURI( $item['URL'] ), '/' ), "#" ) . "/[^/]+/.+$#is", rtrim( $currentURI, '/' ) ) ) {
+			return ' url-ancestor';
+		}
+		return '';
+	}
+
 	/*
 	 * @method Sort By Weight
 	 * @author Luke Snowden
@@ -429,6 +437,7 @@ class MenuContainerNavigation
 			$roots[$key]['class'] .= count( $roots[$key]['children'] ) > 0 ? ' has-children' : '';
 			$roots[$key]['class'] .= $this->rootClass( $roots[$key]['children'] );
 			$roots[$key]['class'] .= $this->isUrlParentClass( $item );
+			$roots[$key]['class'] .= $this->isUrlAncestorClass( $item );
 		}
 		return $roots;
 	}
