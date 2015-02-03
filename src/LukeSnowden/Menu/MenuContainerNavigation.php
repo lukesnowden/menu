@@ -17,7 +17,17 @@ use LukeSnowden\Menu\Helpers\String;
 class MenuContainerNavigation
 {
 
+	/**
+	 * [$type description]
+	 * @var string
+	 */
+
 	private $type = 'default';
+
+	/**
+	 * [$stylesLocation description]
+	 * @var string
+	 */
 
 	private $stylesLocation = '';
 
@@ -55,6 +65,7 @@ class MenuContainerNavigation
 
 	public function addItem( $item = array() )
 	{
+		if( !is_array( $item ) ) return;
 		$defaults = array(
 			'reference' 	=> 0,
 			'text' 			=> '',

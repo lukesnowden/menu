@@ -38,6 +38,13 @@ class MenuContainer
 
 	private $renders = array();
 
+	/**
+	 * [$entrust description]
+	 * @var boolean
+	 */
+
+	private $entrust = false;
+
 	/* @name Items
 	 * @author Luke Snowden
 	 * @param $items (array)
@@ -45,6 +52,15 @@ class MenuContainer
 	*/
 
 	private $items = array();
+
+	/**
+	 * [useEntrustGuard description]
+	 * @return [type] [description]
+	 */
+
+	public function useEntrustGuard() {
+		$this->entrust = true;
+	}
 
 	/*
 	 * @method Add Item
@@ -66,7 +82,21 @@ class MenuContainer
 			'attributes'	=> array()
 		);
 		if( isset( $perams['URL'] ) && preg_match( "#^route:(.*)$#is", $perams['URL'], $match ) ) {
-			$perams['URL'] = \URL::route( $match[1] );
+			if( $this->entrust && \Auth::check() ) {
+				$roles = \Auth::user()->roles()->get();
+				$allowed = true;
+				foreach( $roles as $role ) {
+					foreach( $role->perms as $perm ) {
+						if( in_array( $match[1], $perm->protected_routes ) ) {
+							$perams['URL'] = \URL::route( $match[1] );
+							$this->items[] = array_merge( $defaults, $perams );
+						}
+					}
+				}
+				return $this;
+			} else {
+				$perams['URL'] = \URL::route( $match[1] );
+			}
 		}
 		$this->items[] = array_merge( $defaults, $perams );
 		return $this;
