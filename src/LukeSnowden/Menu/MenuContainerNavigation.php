@@ -310,13 +310,13 @@ class MenuContainerNavigation
 		{
 			if( $currentURI == self::cleanseToURI( $child['URL'] ) )
 			{
-				return ' current-ancestor';
+				return ' active-ancestor';
 			}
 			if( ! empty( $child['children'] ) )
 			{
 				if( ! is_null( $this->isAnAncestor( $child['children'] ) ) )
 				{
-					return ' current-ancestor';
+					return ' active-ancestor';
 				}
 			}
 		}
@@ -336,7 +336,7 @@ class MenuContainerNavigation
 		{
 			if( $currentURI == self::cleanseToURI( $child['URL'] ) )
 			{
-				return ' current-parent';
+				return ' active-parent';
 			}
 		}
 		return '';
@@ -351,7 +351,7 @@ class MenuContainerNavigation
 	public function isUrlParentClass( $item )  {
 		$currentURI = self::currentURI();
 		if( preg_match( "#^" . preg_quote( rtrim( self::cleanseToURI( $item['URL'] ), '/' ), "#" ) . "/[^/]+$#is", rtrim( $currentURI, '/' ) ) ) {
-			return ' current-url-parent';
+			return ' active-url-parent';
 		}
 		return '';
 	}
@@ -395,7 +395,7 @@ class MenuContainerNavigation
 		{
 			if( $currentURI == self::cleanseToURI( $child['URL'] ) )
 			{
-				return ' current-root';
+				return ' active-root';
 			}
 			if( ! empty( $child['children'] ) )
 			{
@@ -440,7 +440,7 @@ class MenuContainerNavigation
 		{
 			if( $currentURI == self::cleanseToURI( $item['URL'] ) )
 			{
-				$this->items[$key]['class'] .= ' current';
+				$this->items[$key]['class'] .= ' active';
 			}
 		}
 	}
