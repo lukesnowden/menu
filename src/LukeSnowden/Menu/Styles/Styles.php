@@ -2,7 +2,13 @@
 
 class Styles
 {
-	/*
+
+	/**
+	 * [renderHorzontal description]
+	 * @param  array   $structure [description]
+	 * @param  integer $depth     [description]
+	 * @return [type]             [description]
+	 */
 	public static function renderHorzontal( $structure = array(), $depth = 1 )
 	{
 		?>
@@ -18,8 +24,36 @@ class Styles
 		<?php endforeach; ?>
 		<?php
 	}
-	*/
 
+	/**
+	 * [renderSemantiUiVertical description]
+	 * @param  array  $structure [description]
+	 * @param  [type] $depth     [description]
+	 * @return [type]            [description]
+	 */
+	public static function renderSemanticUiVertical( $structure = array(), $depth = 1 )
+	{
+		if( $depth === 1 ) ob_start();
+		?>
+		<?php foreach( $structure as $level ) : ?>
+			<a class="item <?php echo $level['class']; ?> node--<?php echo $depth; ?>" href="<?php echo $level['URL']; ?>"><?php echo $level['text']; ?></a>
+			<?php if( ! empty( $level['children'] ) ) : ?>
+				<div class="ui dropdown item">
+					<i class="dropdown icon"></i>
+					<?php self::renderSemanticUiVertical( $level['children'], ($depth+1) ); ?>
+				</div>
+			<?php endif; ?>
+		<?php endforeach; ?>
+		<?php
+		if( $depth === 1 ) return ob_get_clean();
+	}
+
+	/**
+	 * [renderNavTabsDropdowns description]
+	 * @param  array   $structure [description]
+	 * @param  integer $depth     [description]
+	 * @return [type]             [description]
+	 */
 	public static function renderNavTabsDropdowns( $structure = array(), $depth = 1 )
 	{
 		if( $depth === 1 ) ob_start();
