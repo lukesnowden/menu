@@ -2,7 +2,7 @@
 
 use LukeSnowden\Menu\Helpers\UTA as UTA;
 use LukeSnowden\Menu\Helpers\URL;
-use LukeSnowden\Menu\Helpers\String;
+use LukeSnowden\Menu\Helpers\Stringy;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +93,13 @@ class MenuContainerNavigation
 			echo "{$attribute}=\"{$value}\" ";
 		}
 	}
+
+	/**
+	 * [renderDetail description]
+	 * @param  [type]  $structure [description]
+	 * @param  integer $depth     [description]
+	 * @return [type]             [description]
+	 */
 
 	private function renderDetail( $structure, $depth = 1 )
 	{
@@ -201,7 +208,7 @@ class MenuContainerNavigation
 				Throw new \Exception( "{$class} does not exist" );
 			}
 			$style = new $class();
-			$method = String::camel_case( "render-{$this->type}" );
+			$method = Stringy::camel_case( "render-{$this->type}" );
 			if( ! class_exists( $class, $method ) )
 			{
 				Throw new \Exception( "{$method} does not exist" );
@@ -348,6 +355,12 @@ class MenuContainerNavigation
 		}
 		return '';
 	}
+
+	/**
+	 * [isUrlAncestorClass description]
+	 * @param  [type]  $item [description]
+	 * @return boolean       [description]
+	 */
 
 	public function isUrlAncestorClass( $item ) {
 		$currentURI = self::currentURI();

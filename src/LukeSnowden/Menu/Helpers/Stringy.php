@@ -1,6 +1,6 @@
 <?php namespace LukeSnowden\Menu\Helpers;
 
-class String {
+class Stringy {
 
 	/**
 	 * [camel_case description]

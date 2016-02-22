@@ -1,6 +1,6 @@
 <?php namespace LukeSnowden\Menu;
 
-use LukeSnowden\Menu\Helpers\String;
+use LukeSnowden\Menu\Helpers\Stringy;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ class Menu
 			{
 				$parameters[] = false;
 			}
-			$parameters = array_merge( $parameters, array( 'menu' => String::camel_case( $match[1] ) ) );
+			$parameters = array_merge( $parameters, array( 'menu' => Stringy::camel_case( $match[1] ) ) );
 		}
 		return call_user_func_array( array( static::container(), $method ), $parameters );
 	}

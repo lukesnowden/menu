@@ -1,6 +1,6 @@
 <?php namespace LukeSnowden\Menu;
 
-use LukeSnowden\Menu\Helpers\String;
+use LukeSnowden\Menu\Helpers\Stringy;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,7 +110,7 @@ class MenuContainer
 
 	public function toMenu( $name )
 	{
-		$name = String::camel_case( $name );
+		$name = Stringy::camel_case( $name );
 		if( ! isset( $this->navigations[$name] ) )
 		{
 			$this->navigations[$name] = new MenuContainerNavigation( $name );
@@ -126,9 +126,9 @@ class MenuContainer
 
 	public function render( $name = false, $attributes = array(), $node = 'ul' )
 	{
-		if( isset( $this->renders[String::camel_case($name)] ) )
+		if( isset( $this->renders[Stringy::camel_case($name)] ) )
 		{
-			return $this->renders[String::camel_case($name)];
+			return $this->renders[Stringy::camel_case($name)];
 		}
 		if( ! $name )
 		{
@@ -147,7 +147,7 @@ class MenuContainer
 		}
 		else
 		{
-			$name = String::camel_case( $name );
+			$name = Stringy::camel_case( $name );
 			if( ! isset( $this->navigations[$name] ) )
 			{
 				// This gets annoying!
