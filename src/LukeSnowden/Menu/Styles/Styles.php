@@ -36,12 +36,15 @@ class Styles
 		if( $depth === 1 ) ob_start();
 		?>
 		<?php foreach( $structure as $level ) : ?>
-			<a class="item <?php echo $level['class']; ?> node--<?php echo $depth; ?>" href="<?php echo $level['URL']; ?>"><?php echo $level['text']; ?></a>
 			<?php if( ! empty( $level['children'] ) ) : ?>
-				<div class="ui dropdown item">
-					<i class="dropdown icon"></i>
-					<?php self::renderSemanticUiVertical( $level['children'], ($depth+1) ); ?>
+				<div class="item">
+					<a class="header" href="<?php echo $level['URL']; ?>"><?php echo $level['text']; ?></a>
+					<div class="menu">
+						<?php self::renderSemanticUiVertical( $level['children'], ($depth+1) ); ?>
+					</div>
 				</div>
+			<?php else : ?>
+				<a class="item <?php echo $level['class']; ?> node--<?php echo $depth; ?>" href="<?php echo $level['URL']; ?>"><?php echo $level['text']; ?></a>
 			<?php endif; ?>
 		<?php endforeach; ?>
 		<?php
