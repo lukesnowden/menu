@@ -36,6 +36,9 @@ class Styles
 		if( $depth === 1 ) ob_start();
 		?>
 		<?php foreach( $structure as $level ) : ?>
+			<?php if( $level['protected'] && $user = auth('web')->user() ) : ?>
+				<?php if( ! \App::make('Purposemedia\Users\Contracts\Blueprints\Permissions')->hasPermission( $level['protected'] ) ) continue; ?>
+			<?php endif; ?>
 			<?php if( ! empty( $level['children'] ) ) : ?>
 				<div class="item">
 					<a class="header" href="<?php echo $level['URL']; ?>"><?php echo $level['text']; ?></a>

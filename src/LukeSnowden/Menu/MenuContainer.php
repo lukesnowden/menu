@@ -79,9 +79,13 @@ class MenuContainer
 			'class' 		=> '',
 			'children'		=> array(),
 			'icon'			=> '',
-			'attributes'	=> array()
+			'attributes'	=> array(),
+			'protected'		=> false
 		);
 		if( isset( $perams['URL'] ) && preg_match( "#^route:(.*)$#is", $perams['URL'], $match ) ) {
+			if( isset( $perams['protected'] ) && $perams['protected'] ) {
+				$perams['protected'] = $match[1];
+			}
 			if( $this->entrust && \Auth::check() ) {
 				$roles = \Auth::user()->roles()->get();
 				$allowed = true;
