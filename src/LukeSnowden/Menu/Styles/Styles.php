@@ -41,7 +41,7 @@ class Styles
 			<?php endif; ?>
 			<?php if( ! empty( $level['children'] ) ) : ?>
 				<div class="item">
-					<a class="header" href="<?php echo $level['URL']; ?>"><?php echo $level['text']; ?></a>
+					<a class="header <?php echo $level['class']; ?> node--<?php echo $depth; ?>" href="<?php echo $level['URL']; ?>"><?php echo $level['text']; ?></a>
 					<div class="menu">
 						<?php self::renderSemanticUiVertical( $level['children'], ($depth+1) ); ?>
 					</div>
