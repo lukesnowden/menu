@@ -79,6 +79,34 @@ class Styles
 		if( $depth === 1 ) return ob_get_clean();
 	}
 
+    /**
+     * Render bootstrap menu
+     * 
+     * @param array $structure
+     * @param int $depth
+     * @return string
+     */
+    public static function renderBootstrapNav($structure = array(), $depth = 1 )
+    {
+        if( $depth === 1 ) ob_start();
+        foreach( $structure as $level ) :
+            $class = preg_replace( '/current/', 'active', $level['class'] );
+            echo '<li class=" ' . $class . ' ' . ( empty( $level['children'] ) ? '' : 'dropdown' ) . '">';
+            $icon = $level['icon'] ? '<i class="'.$level['icon'].'"></i>' : '' ;
+            if( ! empty( $level['children'] ) ) :
+
+                echo '<a href="#" >'. $icon . $level['text'] . ' <span class="fa fa-chevron-down"></span></a>';
+                echo '<ul class="nav child_menu" role="menu">';
+                echo self::renderNavTabsDropdowns( $level['children'], ($depth+1) );
+                echo '</ul>';
+            else :
+                echo '<a href="' . $level['URL'] . '">'. $icon . $level['text'] . '</a>';
+            endif;
+            echo '</li>';
+        endforeach;
+        if( $depth === 1 ) return ob_get_clean();
+    }
+
 }
 
 ?>
