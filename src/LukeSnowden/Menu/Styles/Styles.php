@@ -67,7 +67,7 @@ class Styles
 			$class = preg_replace( '/current/', 'active', $level['class'] );
 			echo '<li class=" ' . $class . ' ' . ( empty( $level['children'] ) ? '' : 'dropdown' ) . '">';
 				if( ! empty( $level['children'] ) ) :
-					echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $level['text'] . ' <span class="caret"></span></a>';
+					echo '<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">' . $level['text'] . ' <span class="caret"></span></a>';
 					echo '<ul class="dropdown-menu" role="menu">';
 						echo self::renderNavTabsDropdowns( $level['children'], ($depth+1) );
 					echo '</ul>';
@@ -95,7 +95,7 @@ class Styles
             $icon = $level['icon'] ? '<i class="'.$level['icon'].'"></i>' : '' ;
             if( ! empty( $level['children'] ) ) :
 
-                echo '<a href="#" >'. $icon . $level['text'] . ' <span class="fa fa-chevron-down"></span></a>';
+                echo '<a href="javascript:;" >'. $icon . $level['text'] . ' <span class="fa fa-chevron-down"></span></a>';
                 echo '<ul class="nav child_menu" role="menu">';
                 echo self::renderNavTabsDropdowns( $level['children'], ($depth+1) );
                 echo '</ul>';
