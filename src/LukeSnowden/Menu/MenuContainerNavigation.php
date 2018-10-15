@@ -456,13 +456,22 @@ class MenuContainerNavigation
     {
         $this->setCurrentClass();
         $roots = $this->getRoots();
+        $topWeight = 0;
         foreach( $roots as $key => $item )
         {
-            $roots[$key]['children'] = $this->getChildren( $item['reference'] );
-            $roots[$key]['class'] .= count( $roots[$key]['children'] ) > 0 ? ' has-children' : '';
-            $roots[$key]['class'] .= $this->rootClass( $roots[$key]['children'] );
-            $roots[$key]['class'] .= $this->isUrlParentClass( $item );
-            $roots[$key]['class'] .= $this->isUrlAncestorClass( $item );
+            $topWeight = max( $topWeight, $item[ 'weight' ] );
+            $roots[ $key ][ 'children' ] = $this->getChildren( $item[ 'reference' ] );
+            $roots[ $key ][ 'class' ] .= count( $roots[ $key ][ 'children' ] ) > 0 ? ' has-children' : '';
+            $roots[ $key ][ 'class' ] .= $this->rootClass( $roots[ $key ][ 'children' ] );
+            $roots[ $key ][ 'class' ] .= $this->isUrlParentClass( $item );
+            $roots[ $key ][ 'class' ] .= $this->isUrlAncestorClass( $item );
+        }
+        if( $this->items ) {
+            foreach( $this->items as $item ) {
+                $item[ 'weight' ] = $topWeight + 1;
+                $roots[] = $item;
+                $topWeight++;
+            }
         }
         return $roots;
     }
